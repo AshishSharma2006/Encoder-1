@@ -80,12 +80,12 @@ async def clearqueue(event):
 
 async def thumb(event):
     if str(event.sender_id) not in OWNER and event.sender_id != DEV:
-        return await event.reply_text("**Well That Ain't Right!**")
+        return await event.reply_text("Well That Ain't Right!")
     if not event.photo:
         return
     os.system("rm thumb.jpg")
     await event.client.download_media(event.media, file="/bot/thumb.jpg")
-    await event.reply("**Thumbnail Saved Successfully 🎥")
+    await event.reply("Thumbnail Saved Successfully 🎥")
 
 
 async def stats(e):
