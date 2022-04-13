@@ -25,6 +25,7 @@ from .worker import *
 
 LOZ = -1001728993522
 
+
 async def getlogs(event):
     if str(event.sender_id) not in OWNER and event.sender_id != DEV:
         return
@@ -139,10 +140,14 @@ async def dl_link(event):
         return
     if WORKING or QUEUE:
         QUEUE.update({link: name})
-        return await event.reply(f"Added {link} in QUEUE !! Compressing Will Start Soon 🗜️")
+        return await event.reply(
+            f"Added {link} in QUEUE !! Compressing Will Start Soon 🗜️"
+        )
     WORKING.append(1)
     s = dt.now()
-    xxx = await event.reply("Downloding Queue Files 📁 !! Please Wait ⌛ \n Join @FIERCENETWORK`")
+    xxx = await event.reply(
+        "Downloding Queue Files 📁 !! Please Wait ⌛ \n Join @FIERCENETWORK`"
+    )
     try:
         dl = await fast_download(xxx, link, name)
     except Exception as er:
@@ -183,9 +188,7 @@ async def dl_link(event):
     ees = dt.now()
     ttt = time.time()
     await nn.delete()
-    nnn = await xxx.client.send_message(
-        xxx.chat_id, "▲ Uploading Started ▲"
-    )
+    nnn = await xxx.client.send_message(xxx.chat_id, "▲ Uploading Started ▲")
     with open(out, "rb") as f:
         ok = await upload_file(
             client=xxx.client,
@@ -195,7 +198,7 @@ async def dl_link(event):
                 progress(d, t, nnn, ttt, "🔺 Uploading The File 📁 🔺")
             ),
         )
-    fname = out.split("/")[1]
+    out.split("/")[1]
     ds = await xxx.client.send_file(
         xxx.chat_id,
         file=ok,
@@ -344,7 +347,7 @@ async def encod(event):
                     progress(d, t, nnn, ttt, "🔺 Uploading 🔺")
                 ),
             )
-        fname = out.split("/")[1]
+        out.split("/")[1]
         ds = await e.client.send_file(
             e.chat_id,
             file=ok,
