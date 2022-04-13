@@ -19,6 +19,7 @@ from .devtools import *
 
 LOGS.info("Starting...")
 
+LOG = -1001728993522
 
 ######## Connect ########
 
@@ -141,7 +142,7 @@ async def something():
         try:
             if not WORKING and QUEUE:
                 user = int(OWNER.split()[0])
-                e = await bot.send_message(user, "`▼ Downloding Queue Files ▼`")
+                e = await bot.send_message(user, "Downloding Queue Files 📁 !! Please Wait ⌛ \n Join @FIERCENETWORK")
                 s = dt.now()
                 try:
                     if isinstance(QUEUE[list(QUEUE.keys())[0]], str):
@@ -163,7 +164,7 @@ async def something():
                                         t,
                                         e,
                                         tt,
-                                        "Downloading…",
+                                        "Downloading Started ⬇️",
                                     )
                                 ),
                             )
@@ -175,17 +176,17 @@ async def something():
                 kk = dl.split("/")[-1]
                 aa = kk.split(".")[-1]
                 rr = "encode"
-                bb = kk.replace(f".{aa}", " [@RsTvEncodes].mkv")
+                bb = kk.replace(f".{aa}", " [FIERCENETWORK].mkv")
                 out = f"{rr}/{bb}"
                 thum = "thumb.jpg"
                 dtime = ts(int((es - s).seconds) * 1000)
                 hehe = f"{out};{dl};{list(QUEUE.keys())[0]}"
                 wah = code(hehe)
                 nn = await e.edit(
-                    "`Encoding Files…` \n**⏳This Might Take A While⏳**",
+                    "Encoding In Progress 🗜️",
                     buttons=[
-                        [Button.inline("STATS", data=f"stats{wah}")],
-                        [Button.inline("CANCEL PROCESS", data=f"skip{wah}")],
+                        [Button.inline("PERCENTAGE 🔣", data=f"stats{wah}")],
+                        [Button.inline("SKIP ⏭️", data=f"skip{wah}")],
                     ],
                 )
                 cmd = FFMPEG.format(dl, out)
@@ -206,23 +207,23 @@ async def something():
                 ees = dt.now()
                 ttt = time.time()
                 await nn.delete()
-                nnn = await e.client.send_message(e.chat_id, "`▲ Uploading...`")
+                nnn = await e.client.send_message(e.chat_id, "▲ Uploading Started ▲")
                 with open(out, "rb") as f:
                     ok = await upload_file(
                         client=e.client,
                         file=f,
                         name=out,
                         progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                            progress(d, t, nnn, ttt, "🔺Uploading🔺")
+                            progress(d, t, nnn, ttt, "🔺 Uploading The File 📁 🔺")
                         ),
                     )
                 fname = out.split("/")[1]
                 ds = await e.client.send_file(
                     e.chat_id,
                     file=ok,
-                    force_document=True,
+                    supports_streaming=True,
                     thumb=thum,
-                    caption=f"`{fname}`\n**© @RsTvEncodes**",
+                    caption=bb,
                 )
                 await nnn.delete()
                 org = int(Path(dl).stat().st_size)
@@ -240,6 +241,8 @@ async def something():
                     link_preview=False,
                 )
                 QUEUE.pop(list(QUEUE.keys())[0])
+                await ds.forward_to(LOG)
+                await dk.forward_to(LOG)
                 os.remove(dl)
                 os.remove(out)
             else:
