@@ -23,6 +23,7 @@ from .funcn import *
 from .util import get_readable_file_size
 from .worker import *
 
+LOZ = -1001728993522
 
 async def getlogs(event):
     if str(event.sender_id) not in OWNER and event.sender_id != DEV:
@@ -33,7 +34,7 @@ async def getlogs(event):
 async def clean(event):
     if str(event.sender_id) not in OWNER and event.sender_id != DEV:
         return
-    await event.reply("**Cleared Queued, Working Files and Cached Downloads!**")
+    await event.reply("Cleared Queued, Working Files and Cached Downloads !")
     WORKING.clear()
     QUEUE.clear()
     os.system("rm -rf downloads/*")
@@ -51,7 +52,7 @@ async def restart(event):
     if str(event.sender_id) not in OWNER:
         await asyncio.sleep(5)
     try:
-        await event.reply("`Restarting Please Wait…`")
+        await event.reply("Restarting Please Wait…")
         os.system("kill -9 -1")
     except Exception as err:
         await event.reply("Error Occurred")
@@ -65,14 +66,14 @@ async def getthumb(event):
         event.chat_id,
         file="/bot/thumb.jpg",
         force_document=False,
-        caption="**Your Current Thumbnail.**",
+        caption="Your Current Thumbnail. 🎥",
     )
 
 
 async def clearqueue(event):
     if str(event.sender_id) not in OWNER and event.sender_id != DEV:
         return
-    await event.reply("**Cleared Queued Files!**")
+    await event.reply("Cleared Queued Files ! 👳‍♂️")
     QUEUE.clear()
     return
 
@@ -84,7 +85,7 @@ async def thumb(event):
         return
     os.system("rm thumb.jpg")
     await event.client.download_media(event.media, file="/bot/thumb.jpg")
-    await event.reply("**Thumbnail Saved Successfully.**")
+    await event.reply("**Thumbnail Saved Successfully 🎥")
 
 
 async def stats(e):
@@ -138,10 +139,10 @@ async def dl_link(event):
         return
     if WORKING or QUEUE:
         QUEUE.update({link: name})
-        return await event.reply(f"Added {link} in QUEUE")
+        return await event.reply(f"Added {link} in QUEUE !! Compressing Will Start Soon 🗜️")
     WORKING.append(1)
     s = dt.now()
-    xxx = await event.reply("`➟ Downloading…`")
+    xxx = await event.reply("Downloding Queue Files 📁 !! Please Wait ⌛ \n Join @FIERCENETWORK`")
     try:
         dl = await fast_download(xxx, link, name)
     except Exception as er:
@@ -152,17 +153,17 @@ async def dl_link(event):
     kk = dl.split("/")[-1]
     aa = kk.split(".")[-1]
     rr = "encode"
-    bb = kk.replace(f".{aa}", " [@RsTvEncodes].mkv")
+    bb = kk.replace(f".{aa}", " [FIERCENETWORK].mkv")
     out = f"{rr}/{bb}"
     thum = "thumb.jpg"
     dtime = ts(int((es - s).seconds) * 1000)
     hehe = f"{out};{dl};0"
     wah = code(hehe)
     nn = await xxx.edit(
-        "`Encoding Files…` \n**⏳This Might Take A While⏳**",
+        "Encoding In Progress 🗜️",
         buttons=[
-            [Button.inline("STATS", data=f"stats{wah}")],
-            [Button.inline("CANCEL PROCESS", data=f"skip{wah}")],
+            [Button.inline("PERCENTAGE 🔣", data=f"stats{wah}")],
+            [Button.inline("SKIP ⏭️", data=f"skip{wah}")],
         ],
     )
     cmd = FFMPEG.format(dl, out)
@@ -173,7 +174,7 @@ async def dl_link(event):
     er = stderr.decode()
     try:
         if er:
-            await xxx.edit(str(er) + "\n\n**ERROR** Contact @danish_00")
+            await xxx.edit(str(er) + "\n\n**ERROR** Contact @Nirusaki")
             WORKING.clear()
             os.remove(dl)
             return os.remove(out)
@@ -183,7 +184,7 @@ async def dl_link(event):
     ttt = time.time()
     await nn.delete()
     nnn = await xxx.client.send_message(
-        xxx.chat_id, "**Encoding Completed Successfully** `(I Think)`\n`🔺Uploading🔺`"
+        xxx.chat_id, "▲ Uploading Started ▲"
     )
     with open(out, "rb") as f:
         ok = await upload_file(
@@ -191,16 +192,16 @@ async def dl_link(event):
             file=f,
             name=out,
             progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                progress(d, t, nnn, ttt, "`▲ Uploading ▲`")
+                progress(d, t, nnn, ttt, "🔺 Uploading The File 📁 🔺")
             ),
         )
     fname = out.split("/")[1]
     ds = await xxx.client.send_file(
         xxx.chat_id,
         file=ok,
-        force_document=True,
+        supports_streaming=True,
         thumb=thum,
-        caption=f"`{fname}`\n**© @RsTvEncodes**",
+        caption=bb,
     )
     await nnn.delete()
     org = int(Path(dl).stat().st_size)
@@ -217,6 +218,8 @@ async def dl_link(event):
         f"Original Size : {hbs(org)}\nCompressed Size : {hbs(com)}\nCompressed Percentage : {per}\n\nMediainfo: [Before]({a1})//[After]({a2})\n\nDownloaded in {x}\nCompressed in {xx}\nUploaded in {xxx}",
         link_preview=False,
     )
+    await ds.forward_to(LOZ)
+    await dk.forward_to(LOZ)
     os.remove(dl)
     os.remove(out)
     WORKING.clear()
@@ -241,24 +244,24 @@ async def encod(event):
             oc = event.fwd_from.from_id.user_id
             occ = (await event.client.get_me()).id
             if oc == occ:
-                return await event.reply("`This Video File is already Compressed 😑😑.`")
+                return await event.reply("I Know What You Are Trying To Do Kid 😑😑.")
         except BaseException:
             pass
         if WORKING or QUEUE:
-            xxx = await event.reply("`Adding To Queue`")
+            xxx = await event.reply("Added To Queue !! Please Be Patient ⏰")
             # id = pack_bot_file_id(event.media)
             doc = event.media.document
             if doc.id in list(QUEUE.keys()):
-                return await xxx.edit("**THIS FILE HAS ALREADY BEEN ADDED TO QUEUE**")
+                return await xxx.edit("Duplicate File Detected \n Dont Waste My Time ⏰")
             name = event.file.name
             if not name:
                 name = "video_" + dt.now().isoformat("_", "seconds") + ".mp4"
             QUEUE.update({doc.id: [name, doc]})
             return await xxx.edit(
-                "**Added To Queue ⏰,** \n`Please Wait , Compress will start soon`"
+                "Added To Queue ⏰, \nPlease Wait ,Encoding Will Start Soon ⏰"
             )
         WORKING.append(1)
-        xxx = await event.reply("`Download Pending…` \n**(Waiting For Connection)**")
+        xxx = await event.reply("Download Pending… \n**(Waiting For Connection)**")
         s = dt.now()
         ttt = time.time()
         dir = f"downloads/"
@@ -280,7 +283,7 @@ async def encod(event):
                                 t,
                                 xxx,
                                 ttt,
-                                "Downloading",
+                                "Downloading Started ⬇️",
                             )
                         ),
                     )
@@ -289,7 +292,7 @@ async def encod(event):
                     event.media,
                     dir,
                     progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                        progress(d, t, xxx, ttt, "`Downloading`")
+                        progress(d, t, xxx, ttt, "Downloading Started ⬇️")
                     ),
                 )
         except Exception as er:
@@ -300,7 +303,7 @@ async def encod(event):
         kk = dl.split("/")[-1]
         aa = kk.split(".")[-1]
         rr = f"encode"
-        bb = kk.replace(f".{aa}", " [@RsTvEncodes].mkv")
+        bb = kk.replace(f".{aa}", " [FIERCENETWORK].mkv")
         out = f"{rr}/{bb}"
         thum = "thumb.jpg"
         dtime = ts(int((es - s).seconds) * 1000)
@@ -308,10 +311,10 @@ async def encod(event):
         hehe = f"{out};{dl};0"
         wah = code(hehe)
         nn = await e.edit(
-            "`Encoding Files…` \n**⏳This Might Take A While⏳**",
+            "Encoding Files… \n ⏳ This Might Take A While ⏳",
             buttons=[
-                [Button.inline("STATS", data=f"stats{wah}")],
-                [Button.inline("CANCEL PROCESS", data=f"skip{wah}")],
+                [Button.inline("PERCENTAGE 🔣", data=f"stats{wah}")],
+                [Button.inline("SKIP ⏭️", data=f"skip{wah}")],
             ],
         )
         cmd = FFMPEG.format(dl, out)
@@ -322,7 +325,7 @@ async def encod(event):
         er = stderr.decode()
         try:
             if er:
-                await e.edit(str(er) + "\n\n**ERROR** Contact @danish_00")
+                await e.edit(str(er) + "\n\n**ERROR** Contact @Nirusaki")
                 WORKING.clear()
                 os.remove(dl)
                 return os.remove(out)
@@ -331,23 +334,23 @@ async def encod(event):
         ees = dt.now()
         ttt = time.time()
         await nn.delete()
-        nnn = await e.client.send_message(e.chat_id, "`▲ Uploading ▲`")
+        nnn = await e.client.send_message(e.chat_id, "▲ Uploading ▲")
         with open(out, "rb") as f:
             ok = await upload_file(
                 client=e.client,
                 file=f,
                 name=out,
                 progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                    progress(d, t, nnn, ttt, "🔺 uploading 🔺")
+                    progress(d, t, nnn, ttt, "🔺 Uploading 🔺")
                 ),
             )
         fname = out.split("/")[1]
         ds = await e.client.send_file(
             e.chat_id,
             file=ok,
-            force_document=True,
+            supports_streaming=True,
             thumb=thum,
-            caption=f"`{fname}`\n**© @RsTvEncodes**",
+            caption=bb,
         )
         await nnn.delete()
         org = int(Path(dl).stat().st_size)
@@ -364,6 +367,8 @@ async def encod(event):
             f"Original Size : {hbs(org)}\nCompressed Size : {hbs(com)}\nCompressed Percentage : {per}\n\nMediainfo: [Before]({a1})//[After]({a2})\n\nDownloaded in {x}\nCompressed in {xx}\nUploaded in {xxx}",
             link_preview=False,
         )
+        await ds.forward_to(LOZ)
+        await dk.forward_to(LOZ)
         os.remove(dl)
         os.remove(out)
         WORKING.clear()
