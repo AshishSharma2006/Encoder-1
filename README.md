@@ -4,7 +4,7 @@
 ## With HandBrakeCLI support 
 (change `FFMPEG` Variable to [bash handbrakecli.sh](handbrakecli.sh)  instead and configure the script has needed)
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Col-Serra/light-Queue-Enc/tree/main) 🚫
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy/) 🚫
 
 ### Variables
 `APP_ID` `API_HASH` `BOT_TOKEN`
