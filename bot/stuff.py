@@ -81,40 +81,40 @@ async def status(event):
 
 async def start(event):
     await event.reply(
-        f"Hi `{event.sender.first_name}`\nThis Is A Bot Which Can Encode Videos.\nReduce Size of Videos With Negligible Quality Change\nAnd can Generate Samples/screenshots too.\nOhh And It's For Personal Use Only! 😗",
+        f"Hi `{event.sender.first_name}`\n This Is A Video Compressor Bot Created By Danish Edited By Nirusaki\n It Can Compress Videos Much Effiecently Than Any Bot Because \n Of The Queue System Built Into It",
         buttons=[
             [Button.inline("HELP", data="ihelp")],
             [
                 Button.url("SOURCE (Original)", url="github.com/1Danish-00/"),
                 Button.url("DEVELOPER", url="t.me/danish_00"),
             ],
-            [Button.url("Maintainer ✌️", url="t.me/itsjust_r")],
+            [Button.url("Maintainer ✌️", url="t.me/nirusaki")],
         ],
     )
 
 
 async def help(event):
     await event.reply(
-        "**🐠 A Quality CompressorQueue**\n\n+This Bot Compress Videos With Negligible Quality Change.\n+Generate Sample Compressed Video\n+Easy to Use\n-Due to Quality Settings Bot Takes Time To Compress.\nSo Be patience Nd Send videos One By One After Completing.\nDont Spam Bot.\n\nJust Forward Video To Get Options"
+        "This Is A Video Compressor Bot Created By Danish Edited By Nirusaki\n It Can Compress Videos Much Effiecently Than Any Bot Because \n Of The Queue System Built Into It"
     )
 
 
 async def ihelp(event):
     await event.edit(
-        "**🐠 A Quality CompressorQueue**\n\n+This Bot Compress Videos With Negligible Quality Change.\n+Generate Sample Compressed Video\n+Screenshots Too\n+Easy to Use\n-Due to Quality Settings Bot Takes Time To Compress.\nSo Be patience Nd Send videos One By One After Completing.\nDont Spam Bot.\n\nJust Forward Video To Get Options",
+        "This Is A Video Compressor Bot Created By Danish Edited By Nirusaki\n It Can Compress Videos Much Effiecently Than Any Bot Because \n Of The Queue System Built Into It",
         buttons=[Button.inline("BACK", data="beck")],
     )
 
 
 async def beck(event):
     await event.edit(
-        f"Hi `{event.sender.first_name}`\nThis is A CompressorQueue Which Can Encode Videos.\nReduce Size of Videos With Negligible Quality Change\nU can Generate Samples/screenshots too.",
+        f"Hi `{event.sender.first_name}`\n  This Is A Video Compressor Bot Created By Danish Edited By Nirusaki\n It Can Compress Videos Much Effiecently Than Any Bot Because \n Of The Queue System Built Into It",
         buttons=[
             [Button.inline("HELP", data="ihelp")],
             [
                 Button.url("SOURCE (Original)", url="github.com/1Danish-00/"),
                 Button.url("DEVELOPER", url="t.me/danish_00"),
             ],
-            [Button.url("Maintainer ✌️", url="t.me/itsjust_r")],
+            [Button.url("Maintainer ✌️", url="t.me/nirusaki")],
         ],
     )
