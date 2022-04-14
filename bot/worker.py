@@ -17,29 +17,32 @@
 import shutil
 
 import psutil
+from hachoir.metadata import extractMetadata
+from hachoir.parser import createParser
 
 from .FastTelethon import download_file, upload_file
 from .funcn import *
 from .util import get_readable_file_size
 from .worker import *
-from hachoir.metadata import extractMetadata
-from hachoir.parser import createParser
 
 ## SOME VARIABLES ##
 LOZ = -1001728993522
-h=1280
-w=1720
+h = 1280
+w = 1720
 ## DURATION ##
+
 
 def get_duration(dl):
     metadata = extractMetadata(createParser(dl))
     if metadata.has("duration"):
-        return metadata.get('duration').seconds
+        return metadata.get("duration").seconds
     else:
         return 0
-    
-    
- ## LOGS ##
+
+
+## LOGS ##
+
+
 async def getlogs(event):
     if str(event.sender_id) not in OWNER and event.sender_id != DEV:
         return
@@ -191,7 +194,7 @@ async def dl_link(event):
         cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
     )
     stdout, stderr = await process.communicate()
-    er = stderr.decode() 
+    er = stderr.decode()
     try:
         if er:
             await xxx.edit(str(er) + "\n\n**ERROR** Contact @Nirusaki")
