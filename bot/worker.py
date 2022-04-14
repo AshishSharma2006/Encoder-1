@@ -22,10 +22,24 @@ from .FastTelethon import download_file, upload_file
 from .funcn import *
 from .util import get_readable_file_size
 from .worker import *
+from hachoir.metadata import extractMetadata
+from hachoir.parser import createParser
 
+## SOME VARIABLES ##
 LOZ = -1001728993522
+h=1280
+w=1720
+## DURATION ##
 
-
+def get_duration(dl):
+    metadata = extractMetadata(createParser(dl))
+    if metadata.has("duration"):
+        return metadata.get('duration').seconds
+    else:
+        return 0
+    
+    
+ ## LOGS ##
 async def getlogs(event):
     if str(event.sender_id) not in OWNER and event.sender_id != DEV:
         return
@@ -163,6 +177,7 @@ async def dl_link(event):
     thum = "thumb.jpg"
     dtime = ts(int((es - s).seconds) * 1000)
     hehe = f"{out};{dl};0"
+    d = get_duration(dl)
     wah = code(hehe)
     nn = await xxx.edit(
         "Encoding In Progress 🗜️",
@@ -176,7 +191,7 @@ async def dl_link(event):
         cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
     )
     stdout, stderr = await process.communicate()
-    er = stderr.decode()
+    er = stderr.decode() 
     try:
         if er:
             await xxx.edit(str(er) + "\n\n**ERROR** Contact @Nirusaki")
@@ -204,7 +219,10 @@ async def dl_link(event):
         file=ok,
         supports_streaming=True,
         thumb=thum,
+        duration=d,
         caption=bb,
+        height=h,
+        width=w,
     )
     await nnn.delete()
     org = int(Path(dl).stat().st_size)
@@ -307,6 +325,7 @@ async def encod(event):
         aa = kk.split(".")[-1]
         rr = f"encode"
         bb = kk.replace(f".{aa}", " [FIERCENETWORK].mkv")
+        d = get_duration(dl)
         out = f"{rr}/{bb}"
         thum = "thumb.jpg"
         dtime = ts(int((es - s).seconds) * 1000)
@@ -354,6 +373,9 @@ async def encod(event):
             supports_streaming=True,
             thumb=thum,
             caption=bb,
+            duration=d,
+            height=h,
+            width=w,
         )
         await nnn.delete()
         org = int(Path(dl).stat().st_size)
