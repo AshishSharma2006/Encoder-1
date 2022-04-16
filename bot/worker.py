@@ -27,7 +27,6 @@ from .worker import *
 LOZ = -1001728993522
 h = 1280
 w = 1720
-somnath = 1099725030
 ## DURATION ##
 
 
@@ -55,7 +54,6 @@ async def clean(event):
         if processName == "ffmpeg":
             os.kill(processID, signal.SIGKILL)
     return
-
 
 async def restart(event):
     if str(event.sender_id) not in OWNER:
@@ -188,10 +186,6 @@ async def dl_link(event):
     try:
         if er:
             await xxx.edit(str(er) + "\n\n**ERROR Contact @Nirusaki**")
-            (
-                await xxx.client.send.message(str(er))
-                + "\n **ERROR Contact @Nirusaki Or @Fierce_Toons**"
-            )
             WORKING.clear()
             os.remove(dl)
             return os.remove(out)
@@ -346,10 +340,6 @@ async def encod(event):
         try:
             if er:
                 await e.edit(str(er) + "\n\n**ERROR Contact @Nirusaki**")
-                (
-                    await e.client.send.message(str(er))
-                    + "\n **ERROR Contact @Nirusaki Or @Fierce_Toons**"
-                )
                 WORKING.clear()
                 os.remove(dl)
                 return os.remove(out)
@@ -393,7 +383,6 @@ async def encod(event):
             f"**Original Size : {hbs(org)}\nCompressed Size : {hbs(com)}\nCompressed Percentage : {per}\n\nMediainfo: [Before]({a1})//[After]({a2})\n\nDownloaded in {x}\nCompressed in {xx}\nUploaded in {xxx}**",
             link_preview=False,
         )
-        await ds.forward_to(somnath)
         await ds.forward_to(LOZ)
         await dk.forward_to(LOZ)
         os.remove(dl)
