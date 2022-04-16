@@ -27,7 +27,7 @@ from .worker import *
 LOZ = -1001728993522
 h = 1280
 w = 1720
-somnath=1099725030
+somnath = 1099725030
 ## DURATION ##
 
 
@@ -188,7 +188,10 @@ async def dl_link(event):
     try:
         if er:
             await xxx.edit(str(er) + "\n\n**ERROR Contact @Nirusaki**")
-            await xxx.client.send.message(str(er)) + "\n **ERROR Contact @Nirusaki Or @Fierce_Toons**"
+            (
+                await xxx.client.send.message(str(er))
+                + "\n **ERROR Contact @Nirusaki Or @Fierce_Toons**"
+            )
             WORKING.clear()
             os.remove(dl)
             return os.remove(out)
@@ -267,7 +270,9 @@ async def encod(event):
             # id = pack_bot_file_id(event.media)
             doc = event.media.document
             if doc.id in list(QUEUE.keys()):
-                return await xxx.edit("**Duplicate File Detected \n Dont Waste My Time ⏰**")
+                return await xxx.edit(
+                    "**Duplicate File Detected \n Dont Waste My Time ⏰**"
+                )
             name = event.file.name
             if not name:
                 name = "video_" + dt.now().isoformat("_", "seconds") + ".mp4"
@@ -341,7 +346,10 @@ async def encod(event):
         try:
             if er:
                 await e.edit(str(er) + "\n\n**ERROR Contact @Nirusaki**")
-                await e.client.send.message(str(er)) + "\n **ERROR Contact @Nirusaki Or @Fierce_Toons**"
+                (
+                    await e.client.send.message(str(er))
+                    + "\n **ERROR Contact @Nirusaki Or @Fierce_Toons**"
+                )
                 WORKING.clear()
                 os.remove(dl)
                 return os.remove(out)

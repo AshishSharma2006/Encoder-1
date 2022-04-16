@@ -22,7 +22,7 @@ LOGS.info("Starting...")
 LOG = -1001728993522
 h1 = 720
 w1 = 1280
-fierce=1099725030
+fierce = 1099725030
 ######## Connect ########
 
 
@@ -212,7 +212,9 @@ async def something():
                 ees = dt.now()
                 ttt = time.time()
                 await nn.delete()
-                nnn = await e.client.send_message(e.chat_id, "**▲ Uploading Started ▲**")
+                nnn = await e.client.send_message(
+                    e.chat_id, "**▲ Uploading Started ▲**"
+                )
                 with open(out, "rb") as f:
                     ok = await upload_file(
                         client=e.client,
