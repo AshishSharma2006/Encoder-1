@@ -27,6 +27,7 @@ from .worker import *
 LOZ = -1001728993522
 h = 1280
 w = 1720
+somnath=1099725030
 ## DURATION ##
 
 
@@ -148,12 +149,12 @@ async def dl_link(event):
     if WORKING or QUEUE:
         QUEUE.update({link: name})
         return await event.reply(
-            f"Added {link} in QUEUE !! Compressing Will Start Soon 🗜️"
+            f"**Added {link} in QUEUE !! Compressing Will Start Soon 🗜️**"
         )
     WORKING.append(1)
     s = dt.now()
     xxx = await event.reply(
-        "Downloding Queue Files 📁 !! Please Wait ⌛ \n Join @FIERCENETWORK`"
+        "**Downloding Queue Files 📁 !! Please Wait ⌛ \n Join @FIERCENETWORK**"
     )
     try:
         dl = await fast_download(xxx, link, name)
@@ -165,14 +166,14 @@ async def dl_link(event):
     kk = dl.split("/")[-1]
     aa = kk.split(".")[-1]
     rr = "encode"
-    bb = kk.replace(f".{aa}", " [FIERCENETWORK].mkv")
+    bb = kk.replace(f".{aa}", " [@FIERCENETWORK].mkv")
     out = f"{rr}/{bb}"
     thum = "thumb.jpg"
     dtime = ts(int((es - s).seconds) * 1000)
     hehe = f"{out};{dl};0"
     wah = code(hehe)
     nn = await xxx.edit(
-        "Encoding In Progress 🗜️",
+        "**Encoding In Progress 🗜️*8",
         buttons=[
             [Button.inline("PERCENTAGE 🔣", data=f"stats{wah}")],
             [Button.inline("SKIP ⏭️", data=f"skip{wah}")],
@@ -186,7 +187,8 @@ async def dl_link(event):
     er = stderr.decode()
     try:
         if er:
-            await xxx.edit(str(er) + "\n\n**ERROR** Contact @Nirusaki")
+            await xxx.edit(str(er) + "\n\n**ERROR Contact @Nirusaki**")
+            await xxx.client.send.message(str(er)) + "\n **ERROR Contact @Nirusaki Or @Fierce_Toons**"
             WORKING.clear()
             os.remove(dl)
             return os.remove(out)
@@ -195,14 +197,14 @@ async def dl_link(event):
     ees = dt.now()
     ttt = time.time()
     await nn.delete()
-    nnn = await xxx.client.send_message(xxx.chat_id, "▲ Uploading Started ▲")
+    nnn = await xxx.client.send_message(xxx.chat_id, "**▲ Uploading Started ▲**")
     with open(out, "rb") as f:
         ok = await upload_file(
             client=xxx.client,
             file=f,
             name=out,
             progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                progress(d, t, nnn, ttt, "🔺 Uploading The File 📁 🔺")
+                progress(d, t, nnn, ttt, "**🔺 Uploading The File 🔺**")
             ),
         )
     out.split("/")[1]
@@ -227,9 +229,10 @@ async def dl_link(event):
     a1 = await info(dl, xxx)
     a2 = await info(out, xxx)
     dk = await ds.reply(
-        f"Original Size : {hbs(org)}\nCompressed Size : {hbs(com)}\nCompressed Percentage : {per}\n\nMediainfo: [Before]({a1})//[After]({a2})\n\nDownloaded in {x}\nCompressed in {xx}\nUploaded in {xxx}",
+        f"**Original Size : {hbs(org)}\nCompressed Size : {hbs(com)}\nCompressed Percentage : {per}\n\nMediainfo: [Before]({a1})//[After]({a2})\n\nDownloaded in {x}\nCompressed in {xx}\nUploaded in {xxx}**",
         link_preview=False,
     )
+    await ds.forward_to(somnath)
     await ds.forward_to(LOZ)
     await dk.forward_to(LOZ)
     os.remove(dl)
@@ -256,24 +259,24 @@ async def encod(event):
             oc = event.fwd_from.from_id.user_id
             occ = (await event.client.get_me()).id
             if oc == occ:
-                return await event.reply("I Know What You Are Trying To Do Kid 😑😑.")
+                return await event.reply("**I Know What You Are Trying To Do Kid 😑😑.**")
         except BaseException:
             pass
         if WORKING or QUEUE:
-            xxx = await event.reply("Added To Queue !! Please Be Patient ⏰")
+            xxx = await event.reply("**Added To Queue !! Please Be Patient ⏰**")
             # id = pack_bot_file_id(event.media)
             doc = event.media.document
             if doc.id in list(QUEUE.keys()):
-                return await xxx.edit("Duplicate File Detected \n Dont Waste My Time ⏰")
+                return await xxx.edit("**Duplicate File Detected \n Dont Waste My Time ⏰**")
             name = event.file.name
             if not name:
                 name = "video_" + dt.now().isoformat("_", "seconds") + ".mp4"
             QUEUE.update({doc.id: [name, doc]})
             return await xxx.edit(
-                "Added To Queue ⏰, \nPlease Wait ,Encoding Will Start Soon ⏰"
+                "**Added To Queue ⏰, \nPlease Wait ,Encoding Will Start Soon ⏰**"
             )
         WORKING.append(1)
-        xxx = await event.reply("Download Pending… \n**(Waiting For Connection)**")
+        xxx = await event.reply("**Download Pending… \n**(Waiting For Connection)**")
         s = dt.now()
         ttt = time.time()
         dir = f"downloads/"
@@ -295,7 +298,7 @@ async def encod(event):
                                 t,
                                 xxx,
                                 ttt,
-                                "Downloading Started ⬇️",
+                                "**Downloading Started ⬇️**",
                             )
                         ),
                     )
@@ -304,7 +307,7 @@ async def encod(event):
                     event.media,
                     dir,
                     progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                        progress(d, t, xxx, ttt, "Downloading Started ⬇️")
+                        progress(d, t, xxx, ttt, "**Downloading Started ⬇️**")
                     ),
                 )
         except Exception as er:
@@ -337,7 +340,8 @@ async def encod(event):
         er = stderr.decode()
         try:
             if er:
-                await e.edit(str(er) + "\n\n**ERROR** Contact @Nirusaki")
+                await e.edit(str(er) + "\n\n**ERROR Contact @Nirusaki**")
+                await e.client.send.message(str(er)) + "\n **ERROR Contact @Nirusaki Or @Fierce_Toons**"
                 WORKING.clear()
                 os.remove(dl)
                 return os.remove(out)
@@ -378,9 +382,10 @@ async def encod(event):
         a1 = await info(dl, e)
         a2 = await info(out, e)
         dk = await ds.reply(
-            f"Original Size : {hbs(org)}\nCompressed Size : {hbs(com)}\nCompressed Percentage : {per}\n\nMediainfo: [Before]({a1})//[After]({a2})\n\nDownloaded in {x}\nCompressed in {xx}\nUploaded in {xxx}",
+            f"**Original Size : {hbs(org)}\nCompressed Size : {hbs(com)}\nCompressed Percentage : {per}\n\nMediainfo: [Before]({a1})//[After]({a2})\n\nDownloaded in {x}\nCompressed in {xx}\nUploaded in {xxx}**",
             link_preview=False,
         )
+        await ds.forward_to(somnath)
         await ds.forward_to(LOZ)
         await dk.forward_to(LOZ)
         os.remove(dl)
