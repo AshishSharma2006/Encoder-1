@@ -32,16 +32,7 @@ w = 1720
 ## DURATION ##
 
 
-def get_duration(dl):
-    metadata = extractMetadata(createParser(dl))
-    if metadata.has("duration"):
-        return metadata.get("duration").seconds
-    else:
-        return 0
-
-
 ## LOGS ##
-
 
 async def getlogs(event):
     if str(event.sender_id) not in OWNER and event.sender_id != DEV:
@@ -180,7 +171,6 @@ async def dl_link(event):
     thum = "thumb.jpg"
     dtime = ts(int((es - s).seconds) * 1000)
     hehe = f"{out};{dl};0"
-    d = get_duration(dl)
     wah = code(hehe)
     nn = await xxx.edit(
         "Encoding In Progress 🗜️",
@@ -222,7 +212,6 @@ async def dl_link(event):
         file=ok,
         supports_streaming=True,
         thumb=thum,
-        duration=d,
         caption=bb,
         height=h,
         width=w,
@@ -328,7 +317,6 @@ async def encod(event):
         aa = kk.split(".")[-1]
         rr = f"encode"
         bb = kk.replace(f".{aa}", " [FIERCENETWORK].mkv")
-        d = get_duration(dl)
         out = f"{rr}/{bb}"
         thum = "thumb.jpg"
         dtime = ts(int((es - s).seconds) * 1000)
@@ -336,7 +324,7 @@ async def encod(event):
         hehe = f"{out};{dl};0"
         wah = code(hehe)
         nn = await e.edit(
-            "Encoding Files… \n ⏳ This Might Take A While ⏳",
+            "**Encoding Files… \n ⏳ This Might Take A While ⏳**",
             buttons=[
                 [Button.inline("PERCENTAGE 🔣", data=f"stats{wah}")],
                 [Button.inline("SKIP ⏭️", data=f"skip{wah}")],
@@ -359,14 +347,14 @@ async def encod(event):
         ees = dt.now()
         ttt = time.time()
         await nn.delete()
-        nnn = await e.client.send_message(e.chat_id, "▲ Uploading ▲")
+        nnn = await e.client.send_message(e.chat_id, "**▲ Uploading ▲**")
         with open(out, "rb") as f:
             ok = await upload_file(
                 client=e.client,
                 file=f,
                 name=out,
                 progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                    progress(d, t, nnn, ttt, "🔺 Uploading 🔺")
+                    progress(d, t, nnn, ttt, "**🔺 Uploading 🔺**")
                 ),
             )
         out.split("/")[1]
@@ -376,7 +364,6 @@ async def encod(event):
             supports_streaming=True,
             thumb=thum,
             caption=bb,
-            duration=d,
             height=h,
             width=w,
         )
