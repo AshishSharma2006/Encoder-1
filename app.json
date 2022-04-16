@@ -1,18 +1,18 @@
 {
     "name": "light-Queue-Enc",
-    "description": "A Normal Telegram Bot Which can Compress/encode/ Generate Samples of videos.",
-    "logo": "https://telegra.ph/file/75ee20ec8d8c8bba84f02.jpg",
+    "description": "A Encoder Bot With Queue System",
+    "logo": "https://telegra.ph/file/f4fde549a63ecceccd2db.jpg",
     "keywords": ["Telegram","python", "Video","Compressor","Encoder"],
-    "repository": "https://github.com/Col-Serra/light-Queue-Enc",
+    "repository": "https://github.com/nirusaki/encoder",
     "success_url": "https://t.me/Rs_Community",
     "stack": "container",
     "env": {
         "APP_ID": {
-            "description": "You api id, from my.telegram.org or @apiScrapperRoBot.",
+            "description": "You api id, from my.telegram.org.",
             "value": ""
         },
         "API_HASH": {
-            "description": "You api hash, from my.telegram.org or @apiScrapperRoBot.",
+            "description": "You api hash, from my.telegram.org.",
             "value": ""
         },
         "BOT_TOKEN": {
@@ -24,14 +24,14 @@
             "value": ""
         },
         "THUMBNAIL": {
-            "description": "Put Link of any picture.",
+            "description": "Put Link of any picture Telegraph Link.",
             "value": "https://telegra.ph//file/6370f098231e0bc94be70.jpg",
-            "required": false
+            "required": true
         },
         "FFMPEG": {
             "description": "Put your FFMPEG code.",
             "value": "ffmpeg -i '''{}''' -preset ultrafast -c:v libx265 -crf 27 -map 0:v -c:a aac -map 0:a -c:s copy -map 0:s? '''{}''' -y",
-            "required": false
+            "required": true
         }
     }
 }
