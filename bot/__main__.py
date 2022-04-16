@@ -20,8 +20,8 @@ from .devtools import *
 LOGS.info("Starting...")
 
 LOG = -1001728993522
-h1=720
-w1=1280
+h1 = 720
+w1 = 1280
 fierce=1099725030
 ######## Connect ########
 
@@ -229,8 +229,8 @@ async def something():
                     supports_streaming=True,
                     thumb=thum,
                     caption=bb,
-                    height=h1
-                    width=w1
+                    height=h1,
+                    width=w1,
                 )
                 await nnn.delete()
                 org = int(Path(dl).stat().st_size)
