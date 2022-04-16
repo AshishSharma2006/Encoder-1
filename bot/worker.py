@@ -173,7 +173,7 @@ async def dl_link(event):
     hehe = f"{out};{dl};0"
     wah = code(hehe)
     nn = await xxx.edit(
-        "**Encoding In Progress 🗜️*8",
+        "**Encoding In Progress 🗜️**",
         buttons=[
             [Button.inline("PERCENTAGE 🔣", data=f"stats{wah}")],
             [Button.inline("SKIP ⏭️", data=f"skip{wah}")],
