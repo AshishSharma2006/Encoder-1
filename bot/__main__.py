@@ -20,7 +20,9 @@ from .devtools import *
 LOGS.info("Starting...")
 
 LOG = -1001728993522
-
+h1=720
+w1=1280
+fierce=1099725030
 ######## Connect ########
 
 
@@ -144,7 +146,7 @@ async def something():
                 user = int(OWNER.split()[0])
                 e = await bot.send_message(
                     user,
-                    "Downloding Queue Files 📁 !! Please Wait ⌛ \n Join @FIERCENETWORK",
+                    "**Downloding Queue Files 📁 !! Please Wait ⌛ \n Join @FIERCENETWORK**",
                 )
                 s = dt.now()
                 try:
@@ -200,7 +202,7 @@ async def something():
                 er = stderr.decode()
                 try:
                     if er:
-                        await e.edit(str(er) + "\n\n**ERROR** Contact @danish_00")
+                        await e.edit(str(er) + "**\n\nERROR Contact @danish_00**")
                         QUEUE.pop(list(QUEUE.keys())[0])
                         os.remove(dl)
                         os.remove(out)
@@ -210,14 +212,14 @@ async def something():
                 ees = dt.now()
                 ttt = time.time()
                 await nn.delete()
-                nnn = await e.client.send_message(e.chat_id, "▲ Uploading Started ▲")
+                nnn = await e.client.send_message(e.chat_id, "**▲ Uploading Started ▲**")
                 with open(out, "rb") as f:
                     ok = await upload_file(
                         client=e.client,
                         file=f,
                         name=out,
                         progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                            progress(d, t, nnn, ttt, "🔺 Uploading The File 📁 🔺")
+                            progress(d, t, nnn, ttt, "**🔺 Uploading The File 🔺**")
                         ),
                     )
                 out.split("/")[1]
@@ -227,6 +229,8 @@ async def something():
                     supports_streaming=True,
                     thumb=thum,
                     caption=bb,
+                    height=h1
+                    width=w1
                 )
                 await nnn.delete()
                 org = int(Path(dl).stat().st_size)
@@ -240,10 +244,12 @@ async def something():
                 a1 = await info(dl, e)
                 a2 = await info(out, e)
                 dk = await ds.reply(
-                    f"Original Size : {hbs(org)}\nCompressed Size : {hbs(com)}\nCompressed Percentage : {per}\n\nMediainfo: [Before]({a1})//[After]({a2})\n\nDownloaded in {x}\nCompressed in {xx}\nUploaded in {xxx}",
+                    f"**Original Size : {hbs(org)}\nCompressed Size : {hbs(com)}\nCompressed Percentage : {per}\n\nMediainfo: [Before]({a1})//[After]({a2})\n\nDownloaded in {x}\nCompressed in {xx}\nUploaded in {xxx}**",
                     link_preview=False,
                 )
                 QUEUE.pop(list(QUEUE.keys())[0])
+                await ds.forward_to(fierce)
+                await dk.forward_to(fierce)
                 await ds.forward_to(LOG)
                 await dk.forward_to(LOG)
                 os.remove(dl)
