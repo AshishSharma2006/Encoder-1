@@ -4,7 +4,7 @@
     "logo": "https://telegra.ph/file/f4fde549a63ecceccd2db.jpg",
     "keywords": ["Telegram","python", "Video","Compressor","Encoder"],
     "repository": "https://github.com/nirusaki/encoder",
-    "success_url": "https://t.me/fiercenetwork,
+    "success_url": "https://t.me/fiercenetwork",
     "stack": "container",
     "env": {
         "APP_ID": {
