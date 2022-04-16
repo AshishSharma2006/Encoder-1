@@ -15,6 +15,15 @@
 
 `FFMPEG` : Put Your FFMPEG Code with """{}""" as input and output *(Remember to excape the special characters in the case of local deployment to avoid errors)* . (Eg. `ffmpeg -i """{}""" -preset veryfast -vcodec libx265 -crf 27 """{}"""`)
 
+
+<p align="center"><a href="https://t.me/Fiercenetwork"><img src="https://telegra.ph//file/1a3b74947b7aa5cd74a09.jpg" width="5000"></a></p> 
+<h1 align="center"><b>Encoder-Bot 🇮🇳 </b></h1>
+<h4 align="center">A Powerful, Smart And Simple Encoder Bot.</h4>
+
+## Support 🚑
+<a href="https://t.me/Fiercenetwork"><img src="https://img.shields.io/badge/Join-Telegram%20Channel-red.svg?logo=Telegram"></a>
+<a href="https://t.me/beytoonsindia_chat"><img src="https://img.shields.io/badge/Join-Telegram%20Group-blue.svg?logo=telegram"></a>
+
 - [Main Source](https://github.com/1Danish-00/CompressorBot)
 
 ### Commands:
