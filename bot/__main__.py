@@ -22,7 +22,6 @@ LOGS.info("Starting...")
 LOG = -1001728993522
 h1 = 720
 w1 = 1280
-fierce = 1099725030
 ######## Connect ########
 
 
@@ -250,8 +249,6 @@ async def something():
                     link_preview=False,
                 )
                 QUEUE.pop(list(QUEUE.keys())[0])
-                await ds.forward_to(fierce)
-                await dk.forward_to(fierce)
                 await ds.forward_to(LOG)
                 await dk.forward_to(LOG)
                 os.remove(dl)
