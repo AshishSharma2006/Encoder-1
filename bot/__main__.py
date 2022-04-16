@@ -188,7 +188,7 @@ async def something():
                 hehe = f"{out};{dl};{list(QUEUE.keys())[0]}"
                 wah = code(hehe)
                 nn = await e.edit(
-                    "Encoding In Progress 🗜️",
+                    "**Encoding In Progress 🗜️**",
                     buttons=[
                         [Button.inline("PERCENTAGE 🔣", data=f"stats{wah}")],
                         [Button.inline("SKIP ⏭️", data=f"skip{wah}")],
