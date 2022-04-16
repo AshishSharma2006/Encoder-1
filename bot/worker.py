@@ -55,6 +55,7 @@ async def clean(event):
             os.kill(processID, signal.SIGKILL)
     return
 
+
 async def restart(event):
     if str(event.sender_id) not in OWNER:
         await asyncio.sleep(5)
