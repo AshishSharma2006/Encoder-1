@@ -262,7 +262,9 @@ async def encod(event):
         except BaseException:
             pass
         if WORKING or QUEUE:
+            time.sleep(2)
             xxx = await event.reply("**Added To Queue !! Please Be Patient ⏰**")
+            time.sleep(1)
             # id = pack_bot_file_id(event.media)
             doc = event.media.document
             if doc.id in list(QUEUE.keys()):
