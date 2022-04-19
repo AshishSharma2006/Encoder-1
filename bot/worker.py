@@ -146,6 +146,7 @@ async def dl_link(event):
     if not link:
         return
     if WORKING or QUEUE:
+        time.sleep(3)
         QUEUE.update({link: name})
         return await event.reply(
             f"**Added {link} in QUEUE !! Compressing Will Start Soon 🗜️**"
